@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Past Consultations</title>
+    <style>
+        td {
+            width: 200px;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        table, th, td {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<table>
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Doctor</th>
+        <th>Patient's Name</th>
+        <th>Patient's ID</th>
+        <th>Diagnosis</th>
+        <th>Add diagnosis</th>
+    </tr>
+
+    <th:block th:each="c : ${consultations}">
+        <tr>
+            <td th:text="${c.date}"></td>
+            <td th:text="${c.startTime}"></td>
+            <td th:text="${c.endTime}"></td>
+            <td th:text="${c.doctor.name}"></td>
+            <td th:text="${c.patient.name}"></td>
+            <td th:text="${c.patient.idNumber}"></td>
+            <td th:text="${c?.diagnosis}"></td>
+            <td>
+                <form th:action="@{'/doctor/consultation/diagnosis/' + ${c.id}}" method="post">
+                    <textarea name="details" id="details" rows="5" cols="25" th:inline="text">[[${c?.diagnosis}]]</textarea>
+                    <button>Add diagnosis</button>
+                </form>
+            </td>
+        </tr>
+    </th:block>
+
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+<a href="/doctor">Back to doctor page</a>
+
+</html>

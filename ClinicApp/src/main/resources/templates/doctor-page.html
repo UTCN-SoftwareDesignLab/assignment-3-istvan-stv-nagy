@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doctor</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<a th:href="@{/logout}">Logout</a>
+
+<h1>Doctor</h1>
+
+Search for a patient :
+<br />
+<form th:action="@{/doctor/find-patients}" method="post">
+    Name: <input type="text" name="patientInfo"/>
+    <br />
+    <button>Search</button>
+</form>
+<hr />
+
+</body>
+</html>

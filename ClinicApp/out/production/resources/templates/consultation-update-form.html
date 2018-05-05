@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Create Consultation</title>
+</head>
+<body>
+
+<form th:action="@{'/secretary/consultation/update/' + ${consultation.id}}" th:object="${consultation}" method="post">
+    Date: <input type="date" name="consDate" value="${consultation.date}" th:field="${consultation.date}"/>
+    <br />
+    Start Time: <input type="time" name="consStartTime" value="${consultation.startTime}" th:field="${consultation.startTime}"/>
+    <br />
+    End Time: <input type="time" name="consEndTime" value="${consultation.endTime}" th:field="${consultation.endTime}"/>
+    <br />
+    Doctor:
+    <select name="doctor" id="doctor" value="${consultation.doctorID}" th:field="${consultation.doctorID}">
+        <option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.name}"></option>
+    </select>
+    <br />
+    Patient ID: <input type="text" name="patientID" value="${consultation.patientID}" th:field="${consultation.patientID}" readonly="readonly"/>
+    <br />
+    <button>Update</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patients</title>
+    <style>
+        td {
+            width: 200px;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        table, th, td {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>ID Number</th>
+        <th>Date of Birth</th>
+        <th>Address</th>
+        <th>Find Past Consultations</th>
+    </tr>
+
+    <th:block th:each="p : ${patients}">
+        <tr>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.idNumber}"></td>
+            <td th:text="${p.dateOfBirth}"></td>
+            <td th:text="${p.address}"></td>
+            <td>
+                <a th:href = "@{'/doctor/findpast/' + ${p.id}}">Search</a>
+            </td>
+        </tr>
+    </th:block>
+
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+<a href="/secretary">Back to doctor page</a>
+
+</html>

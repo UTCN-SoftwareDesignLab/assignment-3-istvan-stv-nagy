@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Create Patient</title>
+</head>
+<body>
+
+<form th:action="@{/secretary/patient/create}" th:object="${patient}" method="post">
+    Name: <input type="text" name="patientName" th:field="${patient.name}"/>
+    <br />
+    ID Number: <input type="text" name="patientID" th:field="${patient.idNumber}"/>
+    <br />
+    Date of birth: <input type="text" name="patientDOB" th:field="${patient.dateOfBirth}"/>
+    <br />
+    Address: <input type="text" name="patientAddress" th:field="${patient.address}"/>
+    <button>Create</button>
+</form>
+
+<p th:each="message : ${messages}" th:text="${message}"></p>
+
+</body>
+</html>

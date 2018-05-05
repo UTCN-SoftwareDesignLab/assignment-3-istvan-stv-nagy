@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Consultations</title>
+    <style>
+        td {
+            width: 200px;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        table, th, td {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<table>
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Doctor</th>
+        <th>Patient's Name</th>
+        <th>Patient's ID</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    <th:block th:each="c : ${consultations}">
+        <tr>
+            <td th:text="${c.date}"></td>
+            <td th:text="${c.startTime}"></td>
+            <td th:text="${c.endTime}"></td>
+            <td th:text="${c.doctor.name}"></td>
+            <td th:text="${c.patient.name}"></td>
+            <td th:text="${c.patient.idNumber}"></td>
+            <td>
+                <a th:href ="@{'/secretary/consultation/update/' + ${c.id}}">Update</a>
+            </td>
+            <td>
+                <a th:href ="@{'/secretary/consultation/delete/' + ${c.id}}">Delete</a>
+            </td>
+        </tr>
+    </th:block>
+
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+<a href="/secretary">Back to secretary page</a>
+
+</html>
