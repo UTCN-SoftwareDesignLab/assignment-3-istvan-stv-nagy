@@ -3,7 +3,12 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Doctor</title>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/main.css" rel="stylesheet"/>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="js/doctor.js"></script>
 </head>
 <body>
 <a th:href="@{/logout}">Logout</a>
@@ -18,6 +23,20 @@ Search for a patient :
     <button>Search</button>
 </form>
 <hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <table id="conversation" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Consultation Notifications:</th>
+            </tr>
+            </thead>
+            <tbody id="greetings">
+            </tbody>
+        </table>
+    </div>
+</div>
 
 </body>
 </html>

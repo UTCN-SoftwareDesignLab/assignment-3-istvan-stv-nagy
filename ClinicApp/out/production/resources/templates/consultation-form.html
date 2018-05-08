@@ -3,25 +3,33 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
     <title>Create Consultation</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/main.css" rel="stylesheet"/>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/js/secretary.js"></script>
 </head>
 <body>
 
 <form th:action="@{'/secretary/consultation/create/' + ${consultation.patientID}}" th:object="${consultation}" method="post">
-    Date: <input type="date" name="consDate" th:field="${consultation.date}"/>
+    Date: <input type="date" id="date" name="consDate" th:field="${consultation.date}"/>
     <br />
-    Start Time: <input type="time" name="consStartTime" th:field="${consultation.startTime}"/>
+    Start Time: <input type="time" id="startTime" name="consStartTime" th:field="${consultation.startTime}"/>
     <br />
-    End Time: <input type="time" name="consEndTime" th:field="${consultation.endTime}"/>
+    End Time: <input type="time" id="endTime" name="consEndTime" th:field="${consultation.endTime}"/>
     <br />
     Doctor:
     <select name="doctor" id="doctor" th:field="${consultation.doctorID}">
         <option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.name}"></option>
     </select>
     <br />
-    <button>Create</button>
+    Patient ID: <input type="text" name="patientID" value="${consultation.patientID}" th:field="${consultation.patientID}" readonly="readonly"/>
+    <br />
+    <button id="create">Create</button>
 </form>
+
 
 </body>
 </html>

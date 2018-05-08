@@ -32,11 +32,6 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String login() {
-        return "redirect:login";
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String authenticate(@RequestParam("username") String username,
                                @RequestParam("password") String password) {

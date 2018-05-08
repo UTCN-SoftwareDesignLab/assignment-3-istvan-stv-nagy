@@ -66,4 +66,16 @@ public class ConsultationDTO {
     public void setPatientID(int patientID) {
         this.patientID = patientID;
     }
+
+    @Override
+    public String toString() {
+        return "ConsultationDTO{" +
+                "id=" + id +
+                ", date='" + date + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", doctorID=" + doctorID +
+                ", patientID=" + patientID +
+                '}';
+    }
 }
